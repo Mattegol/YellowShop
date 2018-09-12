@@ -203,6 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\PaginationHelper.cs" />
     <Compile Include="Migrations\201809120729398_AddInitialTables.cs" />
     <Compile Include="Migrations\201809120729398_AddInitialTables.Designer.cs">
       <DependentUpon>201809120729398_AddInitialTables.cs</DependentUpon>
@@ -219,7 +220,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\PaginationModel.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -229,6 +232,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\anonymous2.png" />
+    <Content Include="Content\Images\Blockchain.jpg" />
+    <Content Include="Content\Images\IOTA.jpg" />
     <Content Include="Content\Images\Satoshi-Nakamoto.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

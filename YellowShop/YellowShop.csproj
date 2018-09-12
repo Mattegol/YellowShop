@@ -197,6 +197,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemDetailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,6 +206,10 @@
     <Compile Include="Migrations\201809120729398_AddInitialTables.cs" />
     <Compile Include="Migrations\201809120729398_AddInitialTables.Designer.cs">
       <DependentUpon>201809120729398_AddInitialTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809120908205_AddDetailsInProductTable.cs" />
+    <Compile Include="Migrations\201809120908205_AddDetailsInProductTable.Designer.cs">
+      <DependentUpon>201809120908205_AddDetailsInProductTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -223,6 +228,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\anonymous2.png" />
+    <Content Include="Content\Images\Satoshi-Nakamoto.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -279,6 +286,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\ItemDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +307,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809120729398_AddInitialTables.resx">
       <DependentUpon>201809120729398_AddInitialTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809120908205_AddDetailsInProductTable.resx">
+      <DependentUpon>201809120908205_AddDetailsInProductTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,6 +1,32 @@
-﻿
+﻿@model IEnumerable<YellowShop.Models.Product>
+
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Yellow Shop";
 }
 
 <h2>Shop</h2>
+
+
+@foreach (var item in Model)
+{
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="@item.Image" alt="@item.ProductName" title="@item.ProductName">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">@item.ProductName</h4>
+            <p>
+                @item.Description
+            </p>
+            <p>
+                $@item.Price
+            </p>
+            <p>
+                @Html.ActionLink("More Info", "Index", "ItemDetail", new { id = item.Id }, new { id = "Id" })
+            </p>
+        </div>
+    </div>
+}
+

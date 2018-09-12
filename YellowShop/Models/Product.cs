@@ -12,5 +12,8 @@
 
         public string Image { get; set; }
 
+        public string Details { get; set; }
+
+
     }
 }

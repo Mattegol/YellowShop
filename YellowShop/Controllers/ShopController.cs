@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using YellowShop.Models;
 
 namespace YellowShop.Controllers
 {
     public class ShopController : Controller
     {
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+
         // GET: Shop
         public ActionResult Index()
         {
-            return View();
+            var data = _context.Products.Select(p => p).OrderBy(p => p.ProductName);
+
+            return View(data);
         }
     }
 }

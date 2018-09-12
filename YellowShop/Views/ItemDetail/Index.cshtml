@@ -1,0 +1,25 @@
+﻿@model YellowShop.Models.Product
+
+@{
+    ViewBag.Title = Model.ProductName;
+}
+
+<h2>@Model.ProductName</h2>
+
+<div class="media">
+    <div class="media-left">
+        <a href="#">
+            <img class="media-object" src="@Model.Image" alt="@Model.ProductName" title="@Model.ProductName">
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">@Model.ProductName</h4>
+        <p>
+            @Model.Details
+        </p>
+        <p>
+            $@Model.Price
+        </p>
+    </div>
+</div>
+

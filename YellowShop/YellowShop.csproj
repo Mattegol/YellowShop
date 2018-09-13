@@ -304,6 +304,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\ItemDetail\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\CartWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

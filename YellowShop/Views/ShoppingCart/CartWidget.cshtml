@@ -1,0 +1,13 @@
+﻿@model YellowShop.Models.ShoppingCartModel
+
+<div class="navbar-right" style="margin-left:7px">
+    @Html.ActionLink("Checkout", "Index", "ShoppingCart",
+        new { returnUrl = Request.Url.PathAndQuery },
+        new { @class = "btn btn-success btn-sm navbar-btn" })
+</div>
+
+<div class="navbar-text navbar-right">
+    <b>Cart:</b>
+    @Model.Items.Sum(x => x.Quantity) item(s),
+    @Model.GetCartTotal().ToString("c")
+</div>

@@ -34,12 +34,18 @@ namespace YellowShop.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFromCart(int productId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(int id, string returnUrl)
         {
-            GetCart().RemoveItem(productId);
+            GetCart().RemoveItem(id);
 
             return RedirectToAction("Index", new { returnUrl });
         }
+
+        public PartialViewResult CartWidget()
+        {
+            return PartialView(GetCart());
+        }
+
 
         private ShoppingCartModel GetCart()
         {

@@ -212,9 +212,14 @@
     <Compile Include="Migrations\201809120908205_AddDetailsInProductTable.Designer.cs">
       <DependentUpon>201809120908205_AddDetailsInProductTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809121147565_AddTableCategory.cs" />
+    <Compile Include="Migrations\201809121147565_AddTableCategory.Designer.cs">
+      <DependentUpon>201809121147565_AddTableCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -317,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809120908205_AddDetailsInProductTable.resx">
       <DependentUpon>201809120908205_AddDetailsInProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809121147565_AddTableCategory.resx">
+      <DependentUpon>201809121147565_AddTableCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

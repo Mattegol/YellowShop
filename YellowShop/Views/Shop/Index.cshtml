@@ -7,34 +7,48 @@
 
 <h2>Shop</h2>
 
-
-@foreach (var item in Model.Products)
+@using (Html.BeginForm("Index", "Shop", FormMethod.Post, new {id = "ShopForm"}))
 {
-    <div class="media">
-        <div class="media-left">
-            <a href="#">
-                <img class="media-object" src="@item.Image" alt="@item.ProductName" title="@item.ProductName">
-            </a>
-        </div>
-        <div class="media-body">
-            <h4 class="media-heading">@item.ProductName</h4>
-            <p>
-                @item.Description
-            </p>
-            <p>
-                $@item.Price
-            </p>
-            <p>
-                @Html.ActionLink("More Info", "Index", "ItemDetail", new { id = item.Id }, new { id = "Id" })
-            </p>
+    @Html.HiddenFor(x => x.Pagination.CurrentPage)
+    @Html.HiddenFor(x => x.Pagination.ItemsPerPage)
+    @Html.HiddenFor(x => x.Pagination.TotalItems)
+    <div>
+        Category:
+        @Html.DropDownListFor(x => x.CategoryId, Model.Categories(), "--Select a Category--", new
+        {
+           onchange = "document.getElementById('ShopForm').submit();",
+           @class = "form-control"
+        })
+    </div>
+
+    foreach (var item in Model.Products)
+    {
+         <div class="media">
+             <div class="media-left">
+                 <a href="#">
+                     <img class="media-object" src="@item.Image" alt="@item.ProductName" title="@item.ProductName">
+                 </a>
+             </div>
+             <div class="media-body">
+                 <h4 class="media-heading">@item.ProductName</h4>
+                 <p>
+                     @item.Description
+                 </p>
+                 <p>
+                     $@item.Price
+                 </p>
+                 <p>
+                     @Html.ActionLink("More Info", "Index", "ItemDetail", new { id = item.Id }, new { id = "Id" })
+                 </p>
+             </div>
+         </div>
+     }
+    <div class="row">
+        <div class="btn-group pull-right">
+            @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x, categoryId = Model.CategoryId }))
         </div>
     </div>
 }
-<div class="row">
-    <div class="btn-group pull-right">
-        @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x }))
-    </div>
-</div>
 
 
 <div class="row">

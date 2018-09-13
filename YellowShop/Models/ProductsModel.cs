@@ -12,6 +12,8 @@ namespace YellowShop.Models
 
         public int CategoryId { get; set; }
 
+        public string SearchString { get; set; }
+
         public SelectList Categories()
         {
             var context = new ApplicationDbContext();

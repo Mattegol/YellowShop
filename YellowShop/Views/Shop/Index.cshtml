@@ -7,18 +7,27 @@
 
 <h2>Shop</h2>
 
-@using (Html.BeginForm("Index", "Shop", FormMethod.Post, new {id = "ShopForm"}))
+@using (Html.BeginForm("Index", "Shop", FormMethod.Post, new { id = "ShopForm", @class = "form-inline" }))
 {
     @Html.HiddenFor(x => x.Pagination.CurrentPage)
     @Html.HiddenFor(x => x.Pagination.ItemsPerPage)
     @Html.HiddenFor(x => x.Pagination.TotalItems)
-    <div>
-        Category:
-        @Html.DropDownListFor(x => x.CategoryId, Model.Categories(), "--Select a Category--", new
-        {
-           onchange = "document.getElementById('ShopForm').submit();",
-           @class = "form-control"
-        })
+    <div class="row">
+        <div class="col-md-6">
+            Category:
+            @Html.DropDownListFor(x => x.CategoryId, Model.Categories(), "--Select a Category--", new
+            {
+                onchange = "document.getElementById('ShopForm').submit();",
+                @class = "form-control"
+            })
+        </div>
+        <div class="col-md-6">
+            <span class="pull-right">
+                Search for:
+                @Html.TextBoxFor(x => x.SearchString, new {@class = "form-control"})
+                <input type="submit" value="Search" class="btn btn-primary"/>
+            </span>
+        </div>
     </div>
 
     foreach (var item in Model.Products)

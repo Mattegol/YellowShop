@@ -217,9 +217,22 @@
     <Compile Include="Migrations\201809121147565_AddTableCategory.Designer.cs">
       <DependentUpon>201809121147565_AddTableCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809130842547_AlteredTablesForCheckout.cs" />
+    <Compile Include="Migrations\201809130842547_AlteredTablesForCheckout.Designer.cs">
+      <DependentUpon>201809130842547_AlteredTablesForCheckout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809130914231_AlteredTablesForCheckout1.cs" />
+    <Compile Include="Migrations\201809130914231_AlteredTablesForCheckout1.Designer.cs">
+      <DependentUpon>201809130914231_AlteredTablesForCheckout1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809130917130_AlteredTablesForCheckout2.cs" />
+    <Compile Include="Migrations\201809130917130_AlteredTablesForCheckout2.Designer.cs">
+      <DependentUpon>201809130917130_AlteredTablesForCheckout2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\BillingInfo.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -229,6 +242,7 @@
     <Compile Include="Models\PaginationModel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductsModel.cs" />
+    <Compile Include="Models\ShippingInfo.cs" />
     <Compile Include="Models\ShoppingCartItemModel.cs" />
     <Compile Include="Models\ShoppingCartModel.cs" />
     <Compile Include="Models\ShoppingCartViewModel.cs" />
@@ -305,6 +319,9 @@
     <Content Include="Views\ItemDetail\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartWidget.cshtml" />
+    <Content Include="Views\ShoppingCart\ShippingInfo.cshtml" />
+    <Content Include="Views\ShoppingCart\BillingInfo.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +348,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809121147565_AddTableCategory.resx">
       <DependentUpon>201809121147565_AddTableCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809130842547_AlteredTablesForCheckout.resx">
+      <DependentUpon>201809130842547_AlteredTablesForCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809130914231_AlteredTablesForCheckout1.resx">
+      <DependentUpon>201809130914231_AlteredTablesForCheckout1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809130917130_AlteredTablesForCheckout2.resx">
+      <DependentUpon>201809130917130_AlteredTablesForCheckout2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

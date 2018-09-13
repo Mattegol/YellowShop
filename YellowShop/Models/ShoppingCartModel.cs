@@ -41,5 +41,10 @@ namespace YellowShop.Models
         {
             _items.Clear();
         }
+
+        public ShippingInfo ShippingInfo { get; set; }
+
+        public BillingInfo BillingInfo { get; set; }
+
     }
 }

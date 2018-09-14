@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201809130917130_AlteredTablesForCheckout2.Designer.cs">
       <DependentUpon>201809130917130_AlteredTablesForCheckout2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809140735497_AlteredTableCustomer.cs" />
+    <Compile Include="Migrations\201809140735497_AlteredTableCustomer.Designer.cs">
+      <DependentUpon>201809140735497_AlteredTableCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -357,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809130917130_AlteredTablesForCheckout2.resx">
       <DependentUpon>201809130917130_AlteredTablesForCheckout2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809140735497_AlteredTableCustomer.resx">
+      <DependentUpon>201809140735497_AlteredTableCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using YellowShop.Models;
@@ -59,11 +60,25 @@ namespace YellowShop.Controllers
             return cart;
         }
 
+        [Authorize]
         public ViewResult ShippingInfo()
         {
-            return View(new ShippingInfo());
+            var userId = User.Identity.GetUserId();
+
+            var shippingInfo = new ShippingInfo();
+            var customer = _context.Customers.SingleOrDefault(c => c.UserId == userId);
+
+            if (customer == null) return View(shippingInfo);
+
+            shippingInfo.Address = customer.Address;
+            shippingInfo.City = customer.City;
+            shippingInfo.State = customer.State;
+            shippingInfo.Zip = customer.PostalCode;
+
+            return View(shippingInfo);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult ShippingInfo(ShippingInfo shippingInfo)
         {
@@ -78,11 +93,28 @@ namespace YellowShop.Controllers
             return RedirectToAction("BillingInfo");
         }
 
+        [Authorize]
         public ViewResult BillingInfo()
         {
-            return View(new BillingInfo());
+            var userId = User.Identity.GetUserId();
+
+            var billingInfo = new BillingInfo();
+            var customer = _context.Customers.SingleOrDefault(c => c.UserId == userId);
+
+            if (customer == null) return View(billingInfo);
+
+            billingInfo.FirstName = customer.FirstName;
+            billingInfo.LastName = customer.LastName;
+            billingInfo.Address = customer.Address;
+            billingInfo.City = customer.City;
+            billingInfo.State = customer.State;
+            billingInfo.Zip = customer.PostalCode;
+
+
+            return View(billingInfo);
         }
 
+        [Authorize]
         [HttpPost]
         public ViewResult BillingInfo(BillingInfo billingInfo)
         {
@@ -99,42 +131,46 @@ namespace YellowShop.Controllers
             return View("OrderComplete");
         }
 
+        [Authorize]
         private void ProcessOrder(ShoppingCartModel cart)
         {
-            // to do: we need a login for our customer, until then we will create one every time.
-            var customer = new Customer
-            {
-                FirstName = cart.BillingInfo.FirstName,
-                LastName = cart.BillingInfo.LastName,
-                BillingAddress = cart.BillingInfo.Address,
-                BillingCity = cart.BillingInfo.City,
-                BillingState = cart.BillingInfo.State,
-                BillingPostalCode = cart.BillingInfo.Zip,
-            };
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            var userId = User.Identity.GetUserId();
 
-            var order = new Order
-            {
-                CustomerId = customer.Id,
-                OrderDate = DateTime.Now,
-                ShippingAddress = cart.ShippingInfo.Address,
-                ShippingCity = cart.ShippingInfo.City,
-                ShippingState = cart.ShippingInfo.State,
-                ShippingPostalCode = cart.ShippingInfo.Zip
-            };
-            _context.Orders.Add(order);
-            _context.SaveChanges();
+            var customer = _context.Customers.SingleOrDefault(c => c.UserId == userId);
 
-            foreach (ShoppingCartItemModel item in cart.Items)
+            if (customer != null)
             {
-                var orderItem = new OrderItem
+                customer.FirstName = cart.BillingInfo.FirstName;
+                customer.LastName = cart.BillingInfo.LastName;
+                customer.BillingAddress = cart.BillingInfo.Address;
+                customer.BillingCity = cart.BillingInfo.City;
+                customer.BillingState = cart.BillingInfo.State;
+                customer.BillingPostalCode = cart.BillingInfo.Zip;
+
+                _context.SaveChanges();
+
+                var order = new Order
                 {
-                    OrderId = order.Id,
-                    ProductId = item.Product.Id,
-                    Quantity = item.Quantity
+                    CustomerId = customer.Id,
+                    OrderDate = DateTime.Now,
+                    ShippingAddress = cart.ShippingInfo.Address,
+                    ShippingCity = cart.ShippingInfo.City,
+                    ShippingState = cart.ShippingInfo.State,
+                    ShippingPostalCode = cart.ShippingInfo.Zip
                 };
-                _context.OrderItems.Add(orderItem);
+                _context.Orders.Add(order);
+                _context.SaveChanges();
+
+                foreach (ShoppingCartItemModel item in cart.Items)
+                {
+                    var orderItem = new OrderItem
+                    {
+                        OrderId = order.Id,
+                        ProductId = item.Product.Id,
+                        Quantity = item.Quantity
+                    };
+                    _context.OrderItems.Add(orderItem);
+                }
             }
             _context.SaveChanges();
         }
